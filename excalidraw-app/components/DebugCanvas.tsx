@@ -469,12 +469,14 @@ export const DebugFooter = ({ onChange }: { onChange: () => void }) => {
     onChange();
   }, [onChange]);
 
+  // Keep aria-label/data-testid aligned with each handler — copy-paste mismatches
+  // previously made trash/reset/forward/backward indistinguishable to AT and tests.
   return (
     <>
       <button
         className="ToolIcon_type_button"
-        data-testid="debug-forward"
-        aria-label="Move forward"
+        data-testid="debug-trash"
+        aria-label="Clear frames"
         type="button"
         onClick={trashFrames}
       >
@@ -488,8 +490,8 @@ export const DebugFooter = ({ onChange }: { onChange: () => void }) => {
       </button>
       <button
         className="ToolIcon_type_button"
-        data-testid="debug-forward"
-        aria-label="Move forward"
+        data-testid="debug-backward"
+        aria-label="Move backward"
         type="button"
         onClick={moveBackward}
       >
@@ -503,8 +505,8 @@ export const DebugFooter = ({ onChange }: { onChange: () => void }) => {
       </button>
       <button
         className="ToolIcon_type_button"
-        data-testid="debug-forward"
-        aria-label="Move forward"
+        data-testid="debug-reset"
+        aria-label="Reset frame"
         type="button"
         onClick={reset}
       >
@@ -518,8 +520,8 @@ export const DebugFooter = ({ onChange }: { onChange: () => void }) => {
       </button>
       <button
         className="ToolIcon_type_button"
-        data-testid="debug-backward"
-        aria-label="Move backward"
+        data-testid="debug-forward"
+        aria-label="Move forward"
         type="button"
         onClick={moveForward}
       >
