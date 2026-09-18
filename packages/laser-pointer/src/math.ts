@@ -62,6 +62,7 @@ export function getCircleAndPerpendicularLineIntersectionsAtPoint(
   ];
 }
 
+/** Polyline length as the sum of consecutive segment distances. */
 export function runLength(ps: Point[]): number {
   if (ps.length < 2) {
     return 0;
@@ -72,8 +73,6 @@ export function runLength(ps: Point[]): number {
   for (let i = 1; i <= ps.length - 1; i++) {
     len += dist(ps[i - 1], ps[i]);
   }
-
-  len += dist(ps[ps.length - 2], ps[ps.length - 1]);
 
   return len;
 }
