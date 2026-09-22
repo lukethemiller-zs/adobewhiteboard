@@ -727,6 +727,17 @@
     "itemNotAvailable": "Command is not available...",
     "shortcutHint": "For Command palette, use {{shortcut}}"
   },
+  "timer": {
+    "button": "Timer",
+    "title": "Focus timer",
+    "customMinutes": "Custom (minutes)",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset",
+    "timesUp": "Time's up",
+    "remaining": "Remaining time"
+  },
   "keys": {
     "ctrl": "Ctrl",
     "option": "Option",
