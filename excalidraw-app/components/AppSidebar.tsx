@@ -8,20 +8,32 @@ import { useUIAppState } from "@excalidraw/excalidraw/context/ui-appState";
 
 import "./AppSidebar.scss";
 
+/** Accessible names for icon-only Adobe+ promo sidebar tabs. */
+export const APP_SIDEBAR_TAB_LABELS = {
+  comments: "Comments",
+  presentation: "Presentation",
+} as const;
+
+/** Adobe app sidebar: default library/search plus Comments/Presentation promo tabs. */
 export const AppSidebar = () => {
   const { theme, openSidebar } = useUIAppState();
 
   return (
     <DefaultSidebar>
       <DefaultSidebar.TabTriggers>
+        {/* Icon-only triggers need explicit names for assistive tech (icons are aria-hidden). */}
         <Sidebar.TabTrigger
           tab="comments"
+          aria-label={APP_SIDEBAR_TAB_LABELS.comments}
+          data-testid="sidebar-tab-comments"
           style={{ opacity: openSidebar?.tab === "comments" ? 1 : 0.4 }}
         >
           {messageCircleIcon}
         </Sidebar.TabTrigger>
         <Sidebar.TabTrigger
           tab="presentation"
+          aria-label={APP_SIDEBAR_TAB_LABELS.presentation}
+          data-testid="sidebar-tab-presentation"
           style={{ opacity: openSidebar?.tab === "presentation" ? 1 : 0.4 }}
         >
           {presentationIcon}
