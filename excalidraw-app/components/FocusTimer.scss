@@ -1,0 +1,103 @@
+/** Workshop countdown timer — top-right toolbar widget; non-blocking overlay styles. */
+.focus-timer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ui-font, system-ui, sans-serif);
+  font-size: 13px;
+  pointer-events: auto;
+
+  &__toggle,
+  &__preset,
+  &__control,
+  &__start {
+    cursor: pointer;
+    border: 1px solid var(--button-border, rgba(0, 0, 0, 0.12));
+    border-radius: 6px;
+    background: var(--island-bg-color, #fff);
+    color: var(--text-primary-color, #1e1e1e);
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 1.2;
+
+    &:hover {
+      background: var(--button-hover-bg, rgba(0, 0, 0, 0.04));
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 10;
+    min-width: 200px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--dialog-border-color, rgba(0, 0, 0, 0.12));
+    background: var(--island-bg-color, #fff);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__preset--selected {
+    border-color: var(--color-primary, #6965db);
+    background: var(--color-primary-light, rgba(105, 101, 219, 0.12));
+  }
+
+  &__custom-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input {
+      width: 64px;
+      padding: 6px 8px;
+      border: 1px solid var(--dialog-border-color, rgba(0, 0, 0, 0.12));
+      border-radius: 6px;
+      font-size: 13px;
+    }
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--dialog-border-color, rgba(0, 0, 0, 0.12));
+    background: var(--island-bg-color, #fff);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  &__badge--expired {
+    border-color: #c92a2a;
+    background: #fff5f5;
+    color: #c92a2a;
+    animation: focus-timer-flash 0.8s ease-in-out infinite;
+  }
+
+  &__time {
+    min-width: 48px;
+    text-align: center;
+  }
+}
+
+@keyframes focus-timer-flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}

@@ -147,6 +147,7 @@ import "./index.scss";
 
 import { ExcalidrawPlusPromoBanner } from "./components/ExcalidrawPlusPromoBanner";
 import { AppSidebar } from "./components/AppSidebar";
+import { FocusTimer } from "./components/FocusTimer";
 
 import type { CollabAPI } from "./collab/Collab";
 
@@ -973,26 +974,33 @@ const ExcalidrawWrapper = () => {
           return <ExcalidrawLogo size="xs" />;
         }}
         renderTopRightUI={(isMobile) => {
-          if (isMobile || !collabAPI || isCollabDisabled) {
-            return null;
-          }
+          const showCollabUI =
+            !isMobile && collabAPI && !isCollabDisabled;
 
           return (
             <div className="excalidraw-ui-top-right">
-              {excalidrawAPI?.getEditorInterface().formFactor === "desktop" && (
-                <ExcalidrawPlusPromoBanner
-                  isSignedIn={isExcalidrawPlusSignedUser}
-                />
-              )}
+              <FocusTimer excalidrawAPI={excalidrawAPI} />
+              {showCollabUI && (
+                <>
+                  {excalidrawAPI?.getEditorInterface().formFactor ===
+                    "desktop" && (
+                    <ExcalidrawPlusPromoBanner
+                      isSignedIn={isExcalidrawPlusSignedUser}
+                    />
+                  )}
 
-              {collabError.message && <CollabError collabError={collabError} />}
-              <LiveCollaborationTrigger
-                isCollaborating={isCollaborating}
-                onSelect={() =>
-                  setShareDialogState({ isOpen: true, type: "share" })
-                }
-                editorInterface={editorInterface}
-              />
+                  {collabError.message && (
+                    <CollabError collabError={collabError} />
+                  )}
+                  <LiveCollaborationTrigger
+                    isCollaborating={isCollaborating}
+                    onSelect={() =>
+                      setShareDialogState({ isOpen: true, type: "share" })
+                    }
+                    editorInterface={editorInterface}
+                  />
+                </>
+              )}
             </div>
           );
         }}
