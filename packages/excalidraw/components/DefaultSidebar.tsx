@@ -11,6 +11,7 @@ import type { MarkOptional, Merge } from "@excalidraw/common/utility-types";
 
 import { useTunnels } from "../context/tunnels";
 import { useUIAppState } from "../context/ui-appState";
+import { t } from "../i18n";
 
 import "../components/dropdownMenu/DropdownMenu.scss";
 
@@ -22,6 +23,12 @@ import { withInternalFallback } from "./hoc/withInternalFallback";
 import { LibraryIcon, searchIcon } from "./icons";
 
 import type { SidebarProps, SidebarTriggerProps } from "./Sidebar/common";
+
+/** i18n keys for DefaultSidebar icon-only Search/Library tab triggers. */
+export const DEFAULT_SIDEBAR_TAB_LABEL_KEYS = {
+  search: "search.title",
+  library: "toolBar.library",
+} as const;
 
 const DefaultSidebarTrigger = withInternalFallback(
   "DefaultSidebarTrigger",
@@ -99,10 +106,19 @@ export const DefaultSidebar = Object.assign(
           <Sidebar.Tabs>
             <Sidebar.Header>
               <Sidebar.TabTriggers>
-                <Sidebar.TabTrigger tab={CANVAS_SEARCH_TAB}>
+                {/* Icon-only triggers need explicit names; icons are aria-hidden. */}
+                <Sidebar.TabTrigger
+                  tab={CANVAS_SEARCH_TAB}
+                  aria-label={t(DEFAULT_SIDEBAR_TAB_LABEL_KEYS.search)}
+                  data-testid="sidebar-tab-search"
+                >
                   {searchIcon}
                 </Sidebar.TabTrigger>
-                <Sidebar.TabTrigger tab={LIBRARY_SIDEBAR_TAB}>
+                <Sidebar.TabTrigger
+                  tab={LIBRARY_SIDEBAR_TAB}
+                  aria-label={t(DEFAULT_SIDEBAR_TAB_LABEL_KEYS.library)}
+                  data-testid="sidebar-tab-library"
+                >
                   {LibraryIcon}
                 </Sidebar.TabTrigger>
                 <DefaultSidebarTabTriggersTunnel.Out />
