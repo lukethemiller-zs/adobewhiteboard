@@ -2,13 +2,18 @@ import React from "react";
 
 import { DEFAULT_SIDEBAR } from "@excalidraw/common";
 
-import { DefaultSidebar } from "../index";
+import { t } from "../i18n";
 import {
   fireEvent,
+  queryByTestId,
   waitFor,
   withExcalidrawDimensions,
 } from "../tests/test-utils";
 
+import {
+  DEFAULT_SIDEBAR_TAB_LABEL_KEYS,
+  DefaultSidebar,
+} from "./DefaultSidebar";
 import {
   assertExcalidrawWithSidebar,
   assertSidebarDockButton,
@@ -17,6 +22,37 @@ import {
 const { h } = window;
 
 describe("DefaultSidebar", () => {
+  it("exposes unique accessible names on Search and Library tab triggers", async () => {
+    await assertExcalidrawWithSidebar(
+      <DefaultSidebar />,
+      DEFAULT_SIDEBAR.name,
+      async () => {
+        const searchTab = queryByTestId(
+          document.body,
+          "sidebar-tab-search",
+        );
+        const libraryTab = queryByTestId(
+          document.body,
+          "sidebar-tab-library",
+        );
+
+        expect(searchTab).not.toBeNull();
+        expect(libraryTab).not.toBeNull();
+        expect(searchTab).toHaveAttribute(
+          "aria-label",
+          t(DEFAULT_SIDEBAR_TAB_LABEL_KEYS.search),
+        );
+        expect(libraryTab).toHaveAttribute(
+          "aria-label",
+          t(DEFAULT_SIDEBAR_TAB_LABEL_KEYS.library),
+        );
+        expect(searchTab!.getAttribute("aria-label")).not.toBe(
+          libraryTab!.getAttribute("aria-label"),
+        );
+      },
+    );
+  });
+
   it("when `docked={undefined}` & `onDock={undefined}`, should allow docking", async () => {
     await assertExcalidrawWithSidebar(
       <DefaultSidebar />,
