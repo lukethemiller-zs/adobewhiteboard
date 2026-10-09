@@ -8467,7 +8467,7 @@ exports[`regression tests > key 3 selects diamond tool > [end of test] undo stac
 ]
 `;
 
-exports[`regression tests > key 4 selects ellipse tool > [end of test] appState 1`] = `
+exports[`regression tests > key 4 selects arrow tool > [end of test] appState 1`] = `
 {
   "activeEmbeddable": null,
   "activeLockedId": null,
@@ -8476,7 +8476,7 @@ exports[`regression tests > key 4 selects ellipse tool > [end of test] appState 
     "fromSelection": false,
     "lastActiveTool": null,
     "locked": false,
-    "type": "arrow",
+    "type": "selection",
   },
   "bindMode": "orbit",
   "bindingPreference": "enabled",
@@ -8558,10 +8558,42 @@ exports[`regression tests > key 4 selects ellipse tool > [end of test] appState 
   "scrollY": 0,
   "scrolledOutside": false,
   "searchMatches": null,
-  "selectedElementIds": {},
+  "selectedElementIds": {
+    "id0": true,
+  },
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
-  "selectedLinearElement": null,
+  "selectedLinearElement": LinearElementEditor {
+    "customLineAngle": null,
+    "draggedFocusPointBinding": null,
+    "elbowed": false,
+    "elementId": "id0",
+    "hoverPointIndex": -1,
+    "hoveredFocusPointBinding": null,
+    "initialState": {
+      "altFocusPoint": null,
+      "arrowStartIsInside": false,
+      "lastClickedPoint": -1,
+      "origin": null,
+      "prevSelectedPointsIndices": null,
+      "segmentMidpoint": {
+        "added": false,
+        "index": null,
+        "value": null,
+      },
+    },
+    "isDragging": false,
+    "isEditing": false,
+    "lastCommittedPoint": null,
+    "lastUncommittedPoint": null,
+    "pointerDownState": undefined,
+    "pointerOffset": {
+      "x": 0,
+      "y": 0,
+    },
+    "segmentMidPointHoveredCoords": null,
+    "selectedPointsIndices": null,
+  },
   "selectionElement": null,
   "shouldCacheIgnoreZoom": false,
   "showHyperlinkPopup": false,
@@ -8585,15 +8617,92 @@ exports[`regression tests > key 4 selects ellipse tool > [end of test] appState 
 }
 `;
 
-exports[`regression tests > key 4 selects ellipse tool > [end of test] number of elements 1`] = `0`;
+exports[`regression tests > key 4 selects arrow tool > [end of test] number of elements 1`] = `0`;
 
-exports[`regression tests > key 4 selects ellipse tool > [end of test] number of renders 1`] = `4`;
+exports[`regression tests > key 4 selects arrow tool > [end of test] number of renders 1`] = `7`;
 
-exports[`regression tests > key 4 selects ellipse tool > [end of test] redo stack 1`] = `[]`;
+exports[`regression tests > key 4 selects arrow tool > [end of test] redo stack 1`] = `[]`;
 
-exports[`regression tests > key 4 selects ellipse tool > [end of test] undo stack 1`] = `[]`;
+exports[`regression tests > key 4 selects arrow tool > [end of test] undo stack 1`] = `
+[
+  {
+    "appState": AppStateDelta {
+      "delta": Delta {
+        "deleted": {
+          "selectedElementIds": {
+            "id0": true,
+          },
+          "selectedLinearElement": {
+            "elementId": "id0",
+            "isEditing": false,
+          },
+        },
+        "inserted": {
+          "selectedElementIds": {},
+          "selectedLinearElement": null,
+        },
+      },
+    },
+    "elements": {
+      "added": {},
+      "removed": {
+        "id0": {
+          "deleted": {
+            "angle": 0,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "customData": undefined,
+            "elbowed": false,
+            "endArrowhead": "arrow",
+            "endBinding": null,
+            "fillStyle": "solid",
+            "frameId": null,
+            "groupIds": [],
+            "height": 30,
+            "index": "a0",
+            "isDeleted": false,
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "points": [
+              [
+                0,
+                0,
+              ],
+              [
+                30,
+                30,
+              ],
+            ],
+            "roughness": 1,
+            "roundness": {
+              "type": 2,
+            },
+            "startArrowhead": null,
+            "startBinding": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "type": "arrow",
+            "version": 4,
+            "width": 30,
+            "x": 10,
+            "y": 10,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 3,
+          },
+        },
+      },
+      "updated": {},
+    },
+    "id": "id2",
+  },
+]
+`;
 
-exports[`regression tests > key 5 selects arrow tool > [end of test] appState 1`] = `
+exports[`regression tests > key 5 selects ellipse tool > [end of test] appState 1`] = `
 {
   "activeEmbeddable": null,
   "activeLockedId": null,
@@ -8602,7 +8711,7 @@ exports[`regression tests > key 5 selects arrow tool > [end of test] appState 1`
     "fromSelection": false,
     "lastActiveTool": null,
     "locked": false,
-    "type": "ellipse",
+    "type": "selection",
   },
   "bindMode": "orbit",
   "bindingPreference": "enabled",
@@ -8684,7 +8793,9 @@ exports[`regression tests > key 5 selects arrow tool > [end of test] appState 1`
   "scrollY": 0,
   "scrolledOutside": false,
   "searchMatches": null,
-  "selectedElementIds": {},
+  "selectedElementIds": {
+    "id0": true,
+  },
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectedLinearElement": null,
@@ -8711,13 +8822,68 @@ exports[`regression tests > key 5 selects arrow tool > [end of test] appState 1`
 }
 `;
 
-exports[`regression tests > key 5 selects arrow tool > [end of test] number of elements 1`] = `0`;
+exports[`regression tests > key 5 selects ellipse tool > [end of test] number of elements 1`] = `0`;
 
-exports[`regression tests > key 5 selects arrow tool > [end of test] number of renders 1`] = `4`;
+exports[`regression tests > key 5 selects ellipse tool > [end of test] number of renders 1`] = `6`;
 
-exports[`regression tests > key 5 selects arrow tool > [end of test] redo stack 1`] = `[]`;
+exports[`regression tests > key 5 selects ellipse tool > [end of test] redo stack 1`] = `[]`;
 
-exports[`regression tests > key 5 selects arrow tool > [end of test] undo stack 1`] = `[]`;
+exports[`regression tests > key 5 selects ellipse tool > [end of test] undo stack 1`] = `
+[
+  {
+    "appState": AppStateDelta {
+      "delta": Delta {
+        "deleted": {
+          "selectedElementIds": {
+            "id0": true,
+          },
+        },
+        "inserted": {
+          "selectedElementIds": {},
+        },
+      },
+    },
+    "elements": {
+      "added": {},
+      "removed": {
+        "id0": {
+          "deleted": {
+            "angle": 0,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "customData": undefined,
+            "fillStyle": "solid",
+            "frameId": null,
+            "groupIds": [],
+            "height": 30,
+            "index": "a0",
+            "isDeleted": false,
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "type": "ellipse",
+            "version": 3,
+            "width": 30,
+            "x": 10,
+            "y": 10,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 2,
+          },
+        },
+      },
+      "updated": {},
+    },
+    "id": "id2",
+  },
+]
+`;
 
 exports[`regression tests > key 6 selects line tool > [end of test] appState 1`] = `
 {
