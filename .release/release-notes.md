@@ -18,11 +18,10 @@ Focus Mode adds a `focusModeEnabled` flag to app state and reuses the existing `
 
 ### Testing
 
-Full suite run: **1461 passed, 2 failed, 48 skipped** across 107 test files. Existing snapshot suites were regenerated to absorb the branding, colour and toolbar-ordering changes. No new automated tests were added for Focus Mode, the Inspiration Panel or the rebrand, so those features are covered by manual checks only.
+Existing snapshot suites were regenerated to absorb the branding, colour and toolbar-ordering changes. Numeric toolbar shortcut expectations in `regressionTests.test.tsx` were updated so keys `4`/`5` match the arrow/ellipse swap (`4` → arrow, `5` → ellipse). No new automated tests were added for Focus Mode, the Inspiration Panel or the rebrand, so those features are covered by manual checks only.
 
 ### Known limitations
 
-- **Two regression tests are failing.** `key 4 selects ellipse tool` and `key 5 selects arrow tool` in `regressionTests.test.tsx` still assert the old tool order; the arrow/ellipse swap changed the numeric keys but the test table was never updated. The letter shortcuts (`O`, `A`) are unaffected. This is a stale test, not a product defect, but it leaves `master` red.
 - **Typecheck is failing on `master`.** `excalidraw-app/components/BrainstormMode.tsx` imports `useAdobeWhiteboardAPI` from `@excalidraw/excalidraw`, but the package exports `useExcalidrawAPI`. `yarn test:typecheck` exits with `TS2305`.
 - **Brainstorm Mode is not shipping.** The component exists but is never rendered anywhere in the app, so the advertised `Cmd/Ctrl+Shift+B` sticky-note capture is unreachable. It is excluded from this release.
 - Focus Mode is deliberately unavailable on phone form factors and its state resets on reload.

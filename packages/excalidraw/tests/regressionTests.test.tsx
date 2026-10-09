@@ -141,11 +141,12 @@ describe("regression tests", () => {
     expect(API.getSelectedElement().id).not.toEqual(prevSelectedId);
   });
 
+  // Numeric keys follow SHAPES toolbar order (arrow is 4, ellipse is 5).
   for (const [keys, shape, shouldSelect] of [
     [`2${KEYS.R}`, "rectangle", true],
     [`3${KEYS.D}`, "diamond", true],
-    [`4${KEYS.O}`, "ellipse", true],
-    [`5${KEYS.A}`, "arrow", true],
+    [`4${KEYS.A}`, "arrow", true],
+    [`5${KEYS.O}`, "ellipse", true],
     [`6${KEYS.L}`, "line", true],
     [`7${KEYS.P}`, "freedraw", false],
   ] as [string, ExcalidrawElement["type"], boolean][]) {
